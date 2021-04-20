@@ -1,9 +1,11 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style-profile.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'style-profile.css' %} ">
 	
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
@@ -15,12 +17,12 @@
 
 	<div class="container">
 		<header class="hero">
-			<a href="index.html">
+			<a href="/">
 				<i  class="fas fa-chevron-circle-left back-btn"></i>
 			</a>
 			<div class="hero-info">
-				<h1 class="name">Jane Doe</h1>
-				<p  class="relationship">Friend</p>
+				<h1 class="name">{{contact.full_name | title}}</h1>
+				<p  class="relationship">{{contact.relationship | title}}</p>
 			</div>
 		</header>
 
@@ -28,7 +30,7 @@
 
 			<div class="info-line">
 				<i class="fas fa-phone icon-gradient"></i>
-				<p class="phone-number">888.888.888</p>
+				<p class="phone-number">{{contact.phone_number}}</p>
 			</div>
 
 		
@@ -42,14 +44,14 @@
 
 			<div class="info-line">
 				<i class="fas fa-envelope icon-gradient"></i>
-				<p class="email">jane.doe@example.com</p>
+				<p class="email">{{contact.email}}</p>
 			</div>
 
 			
 
 			<div class="info-line">
 				<i id="location" class="fas fa-map-marker-alt icon-gradient"></i>
-				<p class="address">888 Example St</p>
+				<p class="address">{{contact.address}}</p>
 			</div>
 		</section>
 
