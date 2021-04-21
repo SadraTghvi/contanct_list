@@ -12,6 +12,7 @@ def index(request):
     else:
         contacts = Contact.objects.all()
         search_input = ""
+
     return render(request,"index.html",{
         "contacts": contacts,
         "search_input": search_input
@@ -26,8 +27,10 @@ def addContact(request):
             phone_number=request.POST["phone-number"],
             address= request.POST["address"]
         )
+
         new_contact.save()
         return redirect("/")
+
     return render(request,"new.html")
 
 def contactProfile(request,pk):
@@ -56,9 +59,11 @@ def editContact(request,pk):
 
 def deleteContact(request,pk):
     contact = Contact.objects.get(id=pk)
+    
     if request.method == "POST":
         contact.delete()
         return redirect("/")
+
     return render(request, "delete.html", {
         "contact": contact
     })
